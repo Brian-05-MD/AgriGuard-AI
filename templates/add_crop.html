@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - Add Crop</title>
+
+</head>
+
+<body>
+
+    <h1>AgriGuard AI</h1>
+
+    <h2>Add Crop</h2>
+
+    <p>
+        Farm: <strong>{{ farm.farm_name }}</strong>
+    </p>
+
+    <hr>
+
+    <form method="POST">
+
+        <label>Crop</label>
+
+        <br>
+
+        <select name="crop_name" required>
+
+            <option value="">
+                Select Crop
+            </option>
+
+            <option value="Maize">
+                Maize
+            </option>
+
+            <option value="Soybean">
+                Soybean
+            </option>
+
+            <option value="Tomato">
+                Tomato
+            </option>
+
+            <option value="Groundnuts">
+                Groundnuts
+            </option>
+
+            <option value="Other">
+                Other
+            </option>
+
+        </select>
+
+        <br><br>
+
+
+        <label>Variety</label>
+
+        <br>
+
+        <input
+            type="text"
+            name="variety"
+            placeholder="Example: SC 513"
+            required
+        >
+
+        <br><br>
+
+
+        <label>Planting Date</label>
+
+        <br>
+
+        <input
+            type="date"
+            name="planting_date"
+            required
+        >
+
+        <br><br>
+
+
+        <label>Growth Stage</label>
+
+        <br>
+
+        <select name="growth_stage" required>
+
+            <option value="">
+                Select Growth Stage
+            </option>
+
+            <option value="Seedling">
+                Seedling
+            </option>
+
+            <option value="Vegetative">
+                Vegetative
+            </option>
+
+            <option value="Flowering">
+                Flowering
+            </option>
+
+            <option value="Fruiting">
+                Fruiting
+            </option>
+
+            <option value="Maturity">
+                Maturity
+            </option>
+
+            <option value="Harvest">
+                Harvest
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Add Crop
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/farms/{{ farm.id }}/crops">
+        ← Back to Crops
+    </a>
+
+</body>
+
+</html>

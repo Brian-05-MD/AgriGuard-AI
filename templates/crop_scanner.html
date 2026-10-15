@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - Crop Scanner</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='crop_scanner.css') }}">
+
+</head>
+
+<body>
+
+    <div class="scanner-container">
+
+        <h1>AgriGuard AI</h1>
+
+        <h2>Crop Scanner</h2>
+
+        <p>
+            Use your camera or upload a crop image for analysis.
+        </p>
+
+        <!-- CAMERA -->
+
+        <div class="camera-box">
+
+            <video id="camera" autoplay></video>
+
+            <canvas id="canvas"></canvas>
+
+            <div>
+
+                <button onclick="openCamera()">
+                    Open Camera
+                </button>
+
+                <button onclick="takePhoto()">
+                    Take Photo
+                </button>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <!-- IMAGE UPLOAD -->
+
+        <div class="scanner-box">
+
+            <h3>Or Upload Crop Image</h3>
+
+            <input
+                type="file"
+                id="cropImage"
+                accept="image/*"
+            >
+
+            <img
+                id="preview"
+                src=""
+                alt="Crop Preview"
+            >
+
+            <br>
+
+            <button onclick="analyzeCrop()">
+                Analyze Crop
+            </button>
+
+        </div>
+
+        <!-- RESULT -->
+
+        <div id="result" class="result-box">
+
+            <h3>Analysis Result</h3>
+
+            <p>
+                Crop:
+                <span id="cropResult">Waiting...</span>
+            </p>
+
+            <p>
+                Status:
+                <span id="statusResult">Waiting...</span>
+            </p>
+
+            <p>
+                Recommendation:
+                <span id="recommendationResult">
+                    Waiting...
+                </span>
+            </p>
+
+        </div>
+
+        <br>
+
+        <a href="/dashboard">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='crop_scanner.js') }}"></script>
+
+</body>
+
+</html>

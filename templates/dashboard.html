@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='agriguard.css') }}">
+
+</head>
+
+<body>
+
+        <header class="agri-header">
+
+          <h1>AgriGuard AI</h1>
+
+            <nav class="agri-nav">
+
+              <a href="/dashboard">Dashboard</a>
+
+              <a href="/farms">Farms</a>
+
+              <a href="/cropscanner">Crops</a>
+
+              <a href="/agrilearn">AgriLearn</a>
+
+            </nav>
+
+        </header>
+
+<div class="container">
+
+    <p>
+        Welcome, {{ user_name }}!
+    </p>
+
+      <div class="dashboard-grid">
+
+    <div class="dashboard-card">
+
+        <h3>Farm Management</h3>
+
+        <p>
+            Manage farms and agricultural information.
+        </p>
+
+        <a href="/farms" class="btn">
+            Open Farms
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h3>Crop Management</h3>
+
+        <p>
+            Register and manage crops.
+        </p>
+
+        <a href="/farms/1/crops" class="btn">
+            Open Crops
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h3>AI Decision Engine</h3>
+
+        <p>
+            Analyse environmental conditions
+            and identify agricultural risks.
+        </p>
+
+        <a href="/crops/1/ai-analysis"= class="btn">
+            View AI Risk Analysis
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <h3>AgriLearn</h3>
+
+        <p>
+            Learn about climate-smart agriculture
+            and crop management.
+        </p>
+
+        <a href="/agrilearn" class="btn">
+            Start Learning
+        </a>
+
+    </div>
+
+    <div class="dashboard-card">
+
+       <h3>Crop Scanner</h3>
+
+       <p>
+          Scan or upload crop images to identify
+          possible crop health problems.
+       </p>
+
+       <a href="/crop-scanner" class="btn">
+            Open Crop Scanner
+       </a>
+
+    </div> 
+
+</div>
+
+     <hr>
+
+    <h2>AgriGuard AI Control Centre</h2>
+
+    <p>
+       Monitor farms, analyse crop conditions,
+       receive intelligent recommendations and
+       improve agricultural knowledge.
+    </p>
+
+    <hr>
+
+    <h3>System Capabilities</h3>
+
+ <ul>
+
+    <li>
+        Farm & Crop Management
+    </li>
+
+    <li>
+        Environmental Monitoring
+    </li>
+
+    <li>
+        AI-Assisted Risk Assessment
+    </li>
+
+    <li>
+        Smart Recommendations
+    </li>
+
+    <li>
+        Agricultural Education
+    </li>
+
+    <li>
+        Future IoT Sensor Integration
+    </li>
+
+  </ul>
+
+   <hr>
+
+   <h3>Quick Access</h3>
+
+ <p>
+    <a href="/agrilearn">
+        Open AgriLearn
+    </a>
+ </p>
+
+    <p>
+        Intelligent Agricultural Decision-Support System
+    </p>
+
+    <hr>
+
+    <h3>AgriGuard Modules</h3>
+
+    <ul>
+
+      <li>
+         <a href="/farms">
+            Farm Management
+         </a>
+      </li>
+
+      <li>
+         Crop Management
+      </li>
+
+      <li>
+         Crop Monitoring
+      </li>
+
+      <li>
+         AI Crop Analysis
+      </li>
+
+       <li>
+          Agricultural Alerts
+       </li>
+
+       <li>
+          Smart Recommendations
+       </li>
+       
+        <li>
+            <a href="/agrilearn">
+             AgriLearn
+            </a>
+        </li>
+
+
+    </ul>
+
+    <hr>
+
+    <a href="/logout">
+        Logout
+    </a>
+
+</div>
+
+        <footer class="footer">
+
+             <p>
+                AgriGuard AI — Intelligent Agricultural Decision Support System
+            </p>
+
+        </footer>
+
+</body>
+
+</html>

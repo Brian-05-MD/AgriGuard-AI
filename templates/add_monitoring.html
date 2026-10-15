@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - Add Monitoring Data</title>
+
+</head>
+
+<body>
+
+    <h1>AgriGuard AI</h1>
+
+    <h2>Add Monitoring Reading</h2>
+
+    <p>
+        Crop: <strong>{{ crop.crop_name }}</strong>
+    </p>
+
+    <p>
+        Farm: {{ crop.farm_name }}
+    </p>
+
+    <hr>
+
+    <form method="POST">
+
+        <label>
+            Soil Moisture (%)
+        </label>
+
+        <br>
+
+        <input
+            type="number"
+            name="soil_moisture"
+            step="0.1"
+            min="0"
+            max="100"
+            placeholder="Example: 45"
+            required
+        >
+
+        <br><br>
+
+
+        <label>
+            Temperature (°C)
+        </label>
+
+        <br>
+
+        <input
+            type="number"
+            name="temperature"
+            step="0.1"
+            placeholder="Example: 27.5"
+            required
+        >
+
+        <br><br>
+
+
+        <label>
+            Humidity (%)
+        </label>
+
+        <br>
+
+        <input
+            type="number"
+            name="humidity"
+            step="0.1"
+            min="0"
+            max="100"
+            placeholder="Example: 65"
+            required
+        >
+
+        <br><br>
+
+
+        <label>
+            Rainfall (mm)
+        </label>
+
+        <br>
+
+        <input
+            type="number"
+            name="rainfall"
+            step="0.1"
+            min="0"
+            placeholder="Example: 4.5"
+            required
+        >
+
+        <br><br>
+
+
+        <label>
+            Crop Health
+        </label>
+
+        <br>
+
+        <select name="health_status" required>
+
+            <option value="">
+                Select Health Status
+            </option>
+
+            <option value="Healthy">
+                Healthy
+            </option>
+
+            <option value="Moderate Risk">
+                Moderate Risk
+            </option>
+
+            <option value="High Risk">
+                High Risk
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Save Monitoring Data
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/crops/{{ crop.id }}/monitoring">
+        ← Back to Monitoring
+    </a>
+
+</body>
+
+</html>

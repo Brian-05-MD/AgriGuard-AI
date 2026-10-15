@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - My Farms</title>
+
+</head>
+
+<body>
+
+    <h1>AgriGuard AI</h1>
+
+    <h2>My Farms</h2>
+
+    <p>
+        Manage your farms and agricultural locations.
+    </p>
+
+    <hr>
+
+    <a href="/dashboard">
+        ← Back to Dashboard
+    </a>
+
+    <br><br>
+
+    <a href="/farms/add">
+        + Add New Farm
+    </a>
+
+    <hr>
+
+    {% if farms %}
+
+        {% for farm in farms %}
+
+            <div>
+
+                <h3>{{ farm.farm_name }}</h3>
+
+                <p>
+                    Location: {{ farm.location }}
+                </p>
+
+                <p>
+                    Farm Size: {{ farm.farm_size }} hectares
+                </p>
+
+                <a href="/farms/{{ farm.id }}/crops">
+                    View Crops
+                </a>
+
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            You haven't added any farms yet.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>

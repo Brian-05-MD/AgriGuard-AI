@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - Crop Monitoring</title>
+
+</head>
+
+<body>
+
+    <h1>AgriGuard AI</h1>
+
+    <h2>Crop Monitoring</h2>
+
+    <h3>{{ crop.crop_name }}</h3>
+
+    <p>
+        Farm: {{ crop.farm_name }}
+    </p>
+
+    <p>
+        Variety: {{ crop.variety }}
+    </p>
+
+    <p>
+        Growth Stage: {{ crop.growth_stage }}
+    </p>
+
+    <hr>
+
+    <a href="/farms/{{ crop.farm_id }}/crops">
+        ← Back to Crops
+    </a>
+
+    <br><br>
+
+    <a href="/crops/{{ crop.id }}/monitoring/add">
+        + Add Monitoring Reading
+    </a>
+
+    <form
+      method="POST"
+      action="/crops/{{ crop.id }}/monitoring/simulate"
+      style="margin-top: 15px;"
+>
+
+      <button type="submit">
+        Generate Simulated Sensor Reading
+      </button>
+
+    </form>
+
+    <hr>
+
+   <h3>Current Environmental Conditions</h3>
+
+{% if records %}
+
+    {% set latest = records[0] %}
+
+    <table border="1" cellpadding="12">
+
+        <tr>
+
+            <th>Parameter</th>
+            <th>Current Reading</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Soil Moisture</td>
+
+            <td>
+                {{ latest.soil_moisture }}%
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Temperature</td>
+
+            <td>
+                {{ latest.temperature }} °C
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Humidity</td>
+
+            <td>
+                {{ latest.humidity }}%
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Rainfall</td>
+
+            <td>
+                {{ latest.rainfall }} mm
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Crop Health</td>
+
+            <td>
+                <strong>
+                    {{ latest.health_status }}
+                </strong>
+            </td>
+
+        </tr>
+
+    </table>
+
+{% else %}
+
+    <p>No monitoring data available.</p>
+
+{% endif %}
+
+    <hr>
+
+    <h3>Monitoring History</h3>
+
+    {% if records %}
+
+        <table border="1" cellpadding="8">
+
+            <tr>
+
+                <th>Date</th>
+                <th>Soil Moisture</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Rainfall</th>
+                <th>Health Status</th>
+
+            </tr>
+
+            {% for record in records %}
+
+            <tr>
+
+                <td>
+                    {{ record.recorded_at }}
+                </td>
+
+                <td>
+                    {{ record.soil_moisture }}%
+                </td>
+
+                <td>
+                    {{ record.temperature }} °C
+                </td>
+
+                <td>
+                    {{ record.humidity }}%
+                </td>
+
+                <td>
+                    {{ record.rainfall }} mm
+                </td>
+
+                <td>
+                    {{ record.health_status }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <hr>
+
+        <h3>AgriGuard Sensor System</h3>
+
+        <p>
+             Sensor Mode:
+             <strong>Simulation</strong>
+        </p>
+
+        <p>
+             Data Source:
+             <strong>Virtual Agricultural Sensors</strong>
+        </p>
+
+        <p>
+             Future Hardware:
+             <strong>ESP32 + IoT Sensors</strong>
+        </p>
+
+    <form
+          method="POST"
+          action="/crops/{{ crop.id }}/monitoring/simulate"
+>
+
+         <button type="submit">
+          Generate New Sensor Reading
+         </button>
+
+    </form>
+
+    {% else %}
+
+        <p>
+            No historical records available.
+        </p>
+
+    {% endif %}
+
+     
+     <hr>
+
+      <h2>Agricultural Data Analytics</h2>
+
+      <p>
+          AgriGuard uses monitoring data to identify changes in
+          environmental conditions over time.
+      </p>
+
+        <a href="/crops/{{ crop.id }}/ai-analysis">
+
+           <button type="button">
+                Run AgriGuard AI Analysis
+           </button>
+
+        </a>
+      
+       <h3>Soil Moisture Trend</h3>
+
+       <canvas id="soilMoistureChart"></canvas>
+
+          <!-- Chart data -->
+<div id="chartData" style="display:none;">
+
+    {% for r in records|reverse %}
+
+        <span
+            class="record"
+            data-date="{{ r.recorded_at }}"
+            data-moisture="{{ r.soil_moisture }}">
+        </span>
+
+    {% endfor %}
+
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const rows = document.querySelectorAll(".record");
+
+const labels = Array.from(rows).map(
+    row => row.dataset.date
+);
+
+const moisture = Array.from(rows).map(
+    row => Number(row.dataset.moisture)
+);
+
+new Chart(
+    document.getElementById("soilMoistureChart"),
+    {
+        type: "line",
+
+        data: {
+            labels: labels,
+
+            datasets: [{
+                label: "Soil Moisture (%)",
+                data: moisture
+            }]
+        },
+
+        options: {
+            responsive: true
+        }
+    }
+);
+
+</script>
+
+</body>
+
+</html>

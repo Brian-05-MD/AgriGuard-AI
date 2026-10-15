@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - Crops</title>
+
+</head>
+
+<body>
+
+    <h1>AgriGuard AI</h1>
+
+    <h2>{{ farm.farm_name }}</h2>
+
+    <p>
+        Location: {{ farm.location }}
+    </p>
+
+    <hr>
+
+    <a href="/farms">
+        ← Back to My Farms
+    </a>
+
+    <br><br>
+
+    <a href="/farms/{{ farm.id }}/crops/add">
+        + Add Crop
+    </a>
+
+    <hr>
+
+    <h3>Crops on this Farm</h3>
+
+    {% if crops %}
+
+        {% for crop in crops %}
+
+            <div>
+
+                <h3>{{ crop.crop_name }}</h3>
+
+                <p>
+                    Variety: {{ crop.variety }}
+                </p>
+
+                <p>
+                    Planting Date: {{ crop.planting_date }}
+                </p>
+
+                <p>
+                    Growth Stage: {{ crop.growth_stage }}
+                </p>
+
+                <a href="/crops/{{ crop.id }}/monitoring">
+                    View Crop Monitoring
+                </a>
+            </div>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            No crops have been added to this farm yet.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>

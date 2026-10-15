@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>AgriGuard AI Analysis</title>
+
+      <link rel="stylesheet"
+      href="{{ url_for('static', filename='agriguard.css') }}">
+
+</head>
+
+<body>
+
+      <header class="agri-header">
+
+           <h1>AgriGuard AI</h1>
+
+          <nav class="agri-nav">
+
+              <a href="/dashboard">Dashboard</a>
+              <a href="/farms">Farms</a>
+              <a href="/crops">Crops</a>
+              <a href="/agrilearn">AgriLearn</a>
+
+          </nav>
+
+     </header>
+
+ <div class="container">
+
+    <h1>AgriGuard AI</h1>
+
+    <h2>Agricultural Decision Analysis</h2>
+
+    <hr>
+
+    <h3>Crop Information</h3>
+
+    <p>
+        Farm:
+        {{ crop.farm_name }}
+    </p>
+
+    <p>
+        Crop:
+        {{ crop.crop_name }}
+    </p>
+
+
+    <h3>Latest Environmental Data</h3>
+
+    <p>
+        Soil Moisture:
+        {{ record.soil_moisture }}%
+    </p>
+
+    <p>
+        Temperature:
+        {{ record.temperature }} °C
+    </p>
+
+    <p>
+        Humidity:
+        {{ record.humidity }}%
+    </p>
+
+    <p>
+        Rainfall:
+        {{ record.rainfall }} mm
+    </p>
+
+
+    <hr>
+
+
+    <h2>AI Risk Assessment</h2>
+
+    <p>
+        Water Stress:
+        <strong>
+            {{ analysis.water_risk }}
+        </strong>
+    </p>
+
+    <p>
+        Heat Stress:
+        <strong>
+            {{ analysis.heat_risk }}
+        </strong>
+    </p>
+
+    <p>
+        Rainfall Risk:
+        <strong>
+            {{ analysis.rainfall_risk }}
+        </strong>
+    </p>
+
+         <div class="card">
+
+    <h2>AI Risk Assessment</h2>
+
+    <p>
+        AgriGuard AI analysed the available
+        environmental monitoring data.
+    </p>
+
+    <h3>
+        Overall Risk:
+        <span class="risk-high">
+            {{ analysis.overall_risk }}
+        </span>
+    </h3>
+
+</div>
+
+       <div class="card">
+
+             <h2>Smart Recommendations</h2>
+
+              {% for recommendation in analysis.recommendations %}
+
+           <p>
+               • {{ recommendation }}
+           </p>
+
+            {% endfor %}
+
+      </div>
+
+  <hr>
+       
+    <div class="card">
+       <h2>AgriGuard Smart Alert</h2>
+
+          {% if analysis.overall_risk == "HIGH" %}
+
+       <p>
+           <strong>HIGH RISK ALERT</strong>
+       </p>
+
+       <p>
+          AgriGuard has detected environmental conditions
+          that may negatively affect the crop.
+       </p>
+
+      {% elif analysis.overall_risk == "MODERATE" %}
+
+        <p>
+            <strong>MODERATE RISK ALERT</strong>
+        </p>
+
+        <p>
+           Some environmental conditions require closer monitoring.
+        </p>
+
+      {% else %}
+
+        <p>
+            <strong>LOW RISK</strong>
+        </p>
+
+        <p>
+             Current environmental conditions appear stable.
+        </p>
+
+       {% endif %}
+
+      <h3>Detected Conditions</h3>
+
+       <ul>
+           <li>Water Risk: {{ analysis.water_risk }}</li>
+           <li>Heat Risk: {{ analysis.heat_risk }}</li>
+           <li>Rainfall Risk: {{ analysis.rainfall_risk }}</li>
+      </ul>
+
+            {% if analysis.risks %}
+            <h4>Detected Risks</h4>
+           <ul>
+              {% for risk in analysis.risks %}
+              <li>{{ risk }}</li>
+              {% endfor %}
+          </ul>
+         {% endif %}
+
+       <h3>AgriGuard Recommendations</h3>
+
+        {% for recommendation in analysis.recommendations %}
+
+        <p>
+            <strong>Action:</strong>
+            {{ recommendation }}
+        </p>
+
+      {% endfor %}
+    </div>
+
+ <hr>
+
+    <a href="/crops/{{ crop.id }}/monitoring">
+        Back to Monitoring
+    </a>
+
+ </div>
+
+      <footer class="footer">
+
+           <p>
+                AgriGuard AI — Intelligent Agricultural Decision Support System
+           </p>
+
+      </footer>
+
+</body>
+
+</html>

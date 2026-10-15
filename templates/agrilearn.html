@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgriGuard AI - AgriLearn</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='agrilearn.css') }}">
+
+</head>
+
+<body>
+
+    <div class="learn-container">
+
+        <h1>AgriGuard AI</h1>
+
+        <h2>AgriLearn</h2>
+
+        <p>
+            Search agricultural information and learn
+            better farming practices.
+        </p>
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search agriculture topics..."
+            >
+
+            <button onclick="searchKnowledge()">
+                Search
+            </button>
+
+        </div>
+
+        <!-- RESULTS -->
+
+        <div id="searchResults">
+
+            <div class="topic-card">
+                <h3>Soil Moisture</h3>
+
+                <p>
+                    Soil moisture shows the amount of water
+                    available in the soil for plant growth.
+                    Very low soil moisture can cause water stress.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Temperature</h3>
+
+                <p>
+                    High temperatures can increase crop stress
+                    and increase water requirements.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Rainfall</h3>
+
+                <p>
+                    Rainfall provides natural water for crops.
+                    Low rainfall combined with low soil moisture
+                    may require additional water management.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Crop Health</h3>
+
+                <p>
+                    Regular monitoring can help farmers identify
+                    changes in crop conditions early.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Climate-Smart Farming</h3>
+
+                <p>
+                    Climate-smart agriculture uses information,
+                    technology and better farming practices to
+                    improve productivity and resilience.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Maize Pests</h3>
+
+                <p>
+                    Common maize pests can damage leaves, stems
+                    and developing crops. Regular inspection helps
+                    farmers identify pest problems early.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Crop Diseases</h3>
+
+                <p>
+                    Crop diseases may cause spots, discoloration,
+                    wilting or abnormal plant growth. Early
+                    identification can reduce crop losses.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Irrigation</h3>
+
+                <p>
+                    Irrigation provides water to crops when rainfall
+                    is insufficient. Water should be applied according
+                    to crop needs and soil conditions.
+                </p>
+            </div>
+
+            <div class="topic-card">
+                <h3>Fertilizer Management</h3>
+
+                <p>
+                    Proper fertilizer management supplies crops with
+                    nutrients needed for healthy growth. Application
+                    should be based on crop requirements and soil
+                    conditions.
+                </p>
+            </div>
+
+        </div>
+
+        <p id="noResults">
+            No agricultural information found.
+        </p>
+
+        <hr>
+
+        <!-- KNOWLEDGE CHECK -->
+
+        <h2>Quick Knowledge Check</h2>
+
+        <p>
+            What can very low soil moisture indicate?
+        </p>
+
+        <button class="quiz-button"
+                onclick="alert('Correct! Very low soil moisture can indicate water stress.')">
+
+            Water Stress
+
+        </button>
+
+        <button class="quiz-button"
+                onclick="alert('Try again. Think about the amount of water available to the plant.')">
+
+            Healthy Soil
+
+        </button>
+
+        <br><br>
+
+        <a href="/dashboard">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='agrilearn.js') }}"></script>
+
+</body>
+
+</html>
